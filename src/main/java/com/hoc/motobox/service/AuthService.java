@@ -1,5 +1,5 @@
 package com.hoc.motobox.service;
 
-public class SecurityService {
+public class AuthService {
 
 }
