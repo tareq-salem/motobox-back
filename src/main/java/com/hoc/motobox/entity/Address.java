@@ -1,16 +1,12 @@
 package com.hoc.motobox.entity;
 
+import com.hoc.motobox.utils.SuperEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Address extends SuperEntity {
 
     @Column(nullable = false)
     private String street;
@@ -23,20 +19,6 @@ public class Address {
 
     @Column(nullable = false)
     private String city;
-
-    /**
-     * @return the id
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
 
     /**
      * @return the street
