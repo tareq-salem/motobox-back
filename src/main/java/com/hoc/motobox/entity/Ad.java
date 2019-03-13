@@ -1,16 +1,14 @@
 package com.hoc.motobox.entity;
 
+import com.hoc.motobox.utils.SuperEntity;
+
 import javax.persistence.*;
 
 /**
  * @Author Clément
  */
 @Entity
-public class Ad {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Ad extends SuperEntity {
 
     @Column
     private String title;
@@ -41,6 +39,7 @@ public class Ad {
 
     @Column
     private Boolean is_active;
+/*
 
     public Long getId() {
         return id;
@@ -49,6 +48,7 @@ public class Ad {
     public void setId(Long id) {
         this.id = id;
     }
+*/
 
     public String getTitle() {
         return title;
