@@ -1,11 +1,11 @@
 package com.hoc.motobox.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,9 +27,9 @@ public class User {
     private String lastName;
 
     private String phone;
-    @OneToOne
-    @JoinColumn(name = "Address_id", nullable = false)
-    private Address Address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     /**
      * @return the id
@@ -119,14 +119,14 @@ public class User {
      * @return the address
      */
     public Address getAddress() {
-        return Address;
+        return address;
     }
 
     /**
      * @param address the address to set
      */
     public void setAddress(Address address) {
-        Address = address;
+        this.address = address;
     }
 
 }
