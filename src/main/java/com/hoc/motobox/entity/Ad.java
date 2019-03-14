@@ -8,7 +8,8 @@ import javax.persistence.*;
  * @Author Clément
  */
 @Entity
-public class Ad extends SuperEntity {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Ad extends SuperEntity {
 
     @Column
     private String title;
@@ -39,16 +40,6 @@ public class Ad extends SuperEntity {
 
     @Column
     private Boolean is_active;
-/*
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-*/
 
     public String getTitle() {
         return title;
