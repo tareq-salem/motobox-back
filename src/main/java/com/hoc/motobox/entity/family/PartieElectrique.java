@@ -4,4 +4,8 @@ import com.hoc.motobox.entity.Ad;
 
 public abstract class PartieElectrique extends Ad {
 
+	public PartieElectrique(Ad json) {
+		super(json);
+	}
+
 }
