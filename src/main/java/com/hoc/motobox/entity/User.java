@@ -1,14 +1,11 @@
 package com.hoc.motobox.entity;
 
-import com.hoc.motobox.utils.SuperEntity;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.hoc.motobox.utils.SuperEntity;
 
 @Entity
 public class User extends SuperEntity {
@@ -117,11 +114,11 @@ public class User extends SuperEntity {
         this.address = address;
     }
 
-    public Cart getCart(){
+    public Cart getCart() {
         return cart;
     }
 
-    public void setCart(Cart cart){
-         this.cart = cart;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }
