@@ -1,0 +1,7 @@
+package com.hoc.motobox.entity.subcategory;
+
+import com.hoc.motobox.entity.category.GardeBoue;
+
+public class GardeBoueAvant extends GardeBoue {
+
+}
