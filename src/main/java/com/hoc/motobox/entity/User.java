@@ -119,12 +119,12 @@ public class User extends SuperEntity {
         this.address = address;
     }
 
-    public Cart getCart() {
-        return cart;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Role getRole() {
@@ -133,13 +133,5 @@ public class User extends SuperEntity {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }
