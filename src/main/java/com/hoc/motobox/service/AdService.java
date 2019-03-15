@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdService implements SuperRestService<Ad> {
 
-    @Autowired
-    private AdRepository adRepository;
+	@Autowired
+	private AdRepository adRepository;
 
-    @Override
-    public JpaRepository<Ad, Long> getDao() {
-        return adRepository;
-    }
+	@Override
+	public JpaRepository<Ad, Long> getDao() {
+		return adRepository;
+	}
 }
