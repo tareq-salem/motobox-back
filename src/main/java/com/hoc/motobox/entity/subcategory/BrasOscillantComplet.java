@@ -9,4 +9,9 @@ import com.hoc.motobox.entity.category.BrasOscillant;
 @Entity
 public class BrasOscillantComplet extends BrasOscillant {
 
+	public BrasOscillantComplet(Ad json) {
+		super(json);
+		// TODO Auto-generated constructor stub
+	}
+
 }
