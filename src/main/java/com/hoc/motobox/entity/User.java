@@ -31,9 +31,6 @@ public class User extends SuperEntity {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Cart cart;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role", nullable = true)
     private Role role;
