@@ -1,8 +1,10 @@
 package com.hoc.motobox.entity.category;
 
-import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.family.PartieCycle;
 
-public abstract class Cadre extends PartieCycle {
+import javax.persistence.Entity;
+
+@Entity
+public class Cadre extends PartieCycle {
 
 }

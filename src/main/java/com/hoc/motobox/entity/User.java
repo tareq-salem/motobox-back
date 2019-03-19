@@ -1,15 +1,8 @@
 package com.hoc.motobox.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 import com.hoc.motobox.utils.SuperEntity;
+
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorColumn(

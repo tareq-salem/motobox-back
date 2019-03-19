@@ -1,8 +1,10 @@
 package com.hoc.motobox.entity.category;
 
-import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.family.PartieHabillage;
 
-public abstract class Reservoir extends PartieHabillage {
+import javax.persistence.Entity;
+
+@Entity
+public class Reservoir extends PartieHabillage {
 
 }

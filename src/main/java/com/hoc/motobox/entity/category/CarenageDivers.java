@@ -1,9 +1,9 @@
 package com.hoc.motobox.entity.category;
 
-import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.family.PartieHabillage;
 
-public abstract class CarenageDivers extends PartieHabillage {
+import javax.persistence.Entity;
 
-
+@Entity
+public class CarenageDivers extends PartieHabillage {
 }

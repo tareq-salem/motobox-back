@@ -1,31 +1,14 @@
 package com.hoc.motobox.entity;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.hoc.motobox.entity.category.Alternateur;
-import com.hoc.motobox.entity.category.BobineAllumage;
-import com.hoc.motobox.entity.category.BoiteAAir;
-import com.hoc.motobox.entity.category.CarenageDivers;
-import com.hoc.motobox.entity.category.Demarreur;
-import com.hoc.motobox.entity.category.Radiateur;
-import com.hoc.motobox.entity.category.RegulateurDeTension;
-import com.hoc.motobox.entity.category.RelaisDeDemarreur;
-import com.hoc.motobox.entity.category.Reservoir;
-import com.hoc.motobox.entity.category.Selle;
+import com.hoc.motobox.entity.category.*;
 import com.hoc.motobox.entity.subcategory.*;
 import com.hoc.motobox.utils.SuperEntity;
 
-/**
- * @Author Clément
- */
+import javax.persistence.*;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
