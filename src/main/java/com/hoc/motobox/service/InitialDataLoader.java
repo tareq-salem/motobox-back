@@ -1,14 +1,13 @@
 package com.hoc.motobox.service;
 
-import javax.transaction.Transactional;
-
+import com.hoc.motobox.entity.Role;
+import com.hoc.motobox.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
-import com.hoc.motobox.entity.Role;
-import com.hoc.motobox.repository.RoleRepository;
+import javax.transaction.Transactional;
 
 @Service
 public class InitialDataLoader implements ApplicationListener<ContextRefreshedEvent> {

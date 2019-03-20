@@ -1,9 +1,8 @@
 package com.hoc.motobox.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import com.hoc.motobox.entity.Role;
+import com.hoc.motobox.repository.RoleRepository;
+import com.hoc.motobox.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,9 +12,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.hoc.motobox.entity.Role;
-import com.hoc.motobox.repository.RoleRepository;
-import com.hoc.motobox.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

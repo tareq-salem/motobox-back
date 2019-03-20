@@ -1,23 +1,20 @@
 package com.hoc.motobox.service;
 
-import java.util.Set;
-
-import javax.persistence.EntityExistsException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.Role;
 import com.hoc.motobox.entity.User;
 import com.hoc.motobox.repository.RoleRepository;
 import com.hoc.motobox.repository.UserRepository;
 import com.hoc.motobox.utils.SuperRestService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityExistsException;
+import java.util.Set;
 
 @Service
 public class UserService extends InitialDataLoader implements SuperRestService<User> {
