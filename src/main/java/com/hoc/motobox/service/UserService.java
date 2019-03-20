@@ -1,13 +1,18 @@
 package com.hoc.motobox.service;
 
+import java.util.Set;
+
 import javax.persistence.EntityExistsException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.Role;
 import com.hoc.motobox.entity.User;
 import com.hoc.motobox.repository.RoleRepository;
@@ -24,6 +29,9 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleReposytory;
+
+	@Autowired
+	AdService adService;
 
 	@Override
 	public JpaRepository<User, Long> getDao() {
@@ -46,21 +54,20 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 		}
 		User createUser = new User();
 
+		createUser.setEmail(user.getEmail());
+		createUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		createUser.setFirstName(user.getFirstName());
+		createUser.setLastName(user.getLastName());
+		createUser.setPhone(user.getPhone());
+		createUser.setAddress(user.getAddress());
 
-        createUser.setEmail(user.getEmail());
-        createUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        createUser.setFirstName(user.getFirstName());
-        createUser.setLastName(user.getLastName());
-        createUser.setPhone(user.getPhone());
-        createUser.setAddress(user.getAddress());
-        
-        Role userRole;
-        if (user.getRole() != null) {
-        	userRole = roleReposytory.findByName(user.getRole().getName());
-        } else {
-        	userRole = roleReposytory.findByName("USER");
-        }
-        createUser.setRole(userRole);
+		Role userRole;
+		if (user.getRole() != null) {
+			userRole = roleReposytory.findByName(user.getRole().getName());
+		} else {
+			userRole = roleReposytory.findByName("USER");
+		}
+		createUser.setRole(userRole);
 
 
 		return userRepository.save(createUser);
@@ -70,6 +77,33 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 	private boolean emailExists(final String email) {
 		return userRepository.findByEmail(email) != null;
 	}
+
+	public Ad addAdToCart(Long idAd, Long idUser) {
+
+		User user = userRepository.findById(idUser).orElseGet(null);
+		Ad ad = adService.findById(idAd).orElseGet(null);
+		Set<Ad> cart = user.getPanier();
+		cart.add(ad);
+		user.setPanier(cart);
+		userRepository.save(user);
+
+		return ad;
+
+	}
 	
+	public User removeAdFromCart(Long idAd, Long idUser) {
+		
+		User user = userRepository.findById(idUser).orElseGet(null);
+		Ad ad = adService.findById(idAd).orElseGet(null);
+		Set<Ad> cart = user.getPanier();
+		cart.remove(ad);
+		userRepository.save(user);
+		return user;
+	}
 	
+	public Set<Ad> getCart(Long id){
+		
+		return userRepository.findById(id).orElse(null).getPanier();
+	}
+
 }
