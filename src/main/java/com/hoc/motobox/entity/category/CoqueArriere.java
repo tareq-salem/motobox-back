@@ -2,6 +2,9 @@ package com.hoc.motobox.entity.category;
 
 import com.hoc.motobox.entity.family.PartieHabillage;
 
-public abstract class CoqueArriere extends PartieHabillage {
+import javax.persistence.Entity;
+
+@Entity
+public abstract class  CoqueArriere extends PartieHabillage {
 
 }

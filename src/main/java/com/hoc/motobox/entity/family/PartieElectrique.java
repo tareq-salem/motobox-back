@@ -2,5 +2,8 @@ package com.hoc.motobox.entity.family;
 
 import com.hoc.motobox.entity.Ad;
 
-public abstract class PartieElectrique extends Ad {
+import javax.persistence.Entity;
+
+@Entity
+public abstract class  PartieElectrique extends Ad {
 }
