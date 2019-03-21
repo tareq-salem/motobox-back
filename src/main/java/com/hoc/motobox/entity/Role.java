@@ -1,16 +1,22 @@
 package com.hoc.motobox.entity;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hoc.motobox.utils.SuperEntity;
-
-import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Role extends SuperEntity {
 
     @Column(unique = true)
     private String name;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "role", fetch = FetchType.EAGER, orphanRemoval = true)
     @Column(name = "users", nullable = true)
