@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieMoteur;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  CarburationInjection extends PartieMoteur {
+public class  CarburationInjection extends PartieMoteur {
 }

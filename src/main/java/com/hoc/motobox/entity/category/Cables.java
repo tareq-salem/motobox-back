@@ -5,6 +5,6 @@ import com.hoc.motobox.entity.family.PartieMoteur;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  Cables extends PartieMoteur {
+public class  Cables extends PartieMoteur {
 
 }

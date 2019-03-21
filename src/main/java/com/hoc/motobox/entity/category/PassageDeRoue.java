@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieHabillage;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  PassageDeRoue extends PartieHabillage {
+public class  PassageDeRoue extends PartieHabillage {
 }

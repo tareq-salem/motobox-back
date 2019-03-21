@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieElectrique;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  Commodo extends PartieElectrique {
+public class  Commodo extends PartieElectrique {
 }

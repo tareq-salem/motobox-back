@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieCycle;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  PlatineReposePied extends PartieCycle {
+public class  PlatineReposePied extends PartieCycle {
 }

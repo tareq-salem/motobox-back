@@ -5,6 +5,6 @@ import com.hoc.motobox.entity.family.PartieCycle;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  Jantes extends PartieCycle {
+public class  Jantes extends PartieCycle {
 
 }

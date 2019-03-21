@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.Ad;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  PartieMoteur extends Ad {
+public class  PartieMoteur extends Ad {
 }

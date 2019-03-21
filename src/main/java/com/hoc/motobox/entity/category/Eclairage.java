@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieElectrique;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  Eclairage extends PartieElectrique {
+public class  Eclairage extends PartieElectrique {
 }

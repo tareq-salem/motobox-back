@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieCycle;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  Bequille extends PartieCycle {
+public class  Bequille extends PartieCycle {
 }

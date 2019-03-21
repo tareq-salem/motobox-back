@@ -5,5 +5,5 @@ import com.hoc.motobox.entity.family.PartieCycle;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class  BrasOscillant extends PartieCycle {
+public class  BrasOscillant extends PartieCycle {
 }
