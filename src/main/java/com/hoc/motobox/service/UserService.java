@@ -1,16 +1,16 @@
 package com.hoc.motobox.service;
 
-import java.util.Set;
-
-import javax.persistence.EntityExistsException;
-import javax.servlet.http.HttpServletRequest;
-
+import com.hoc.motobox.entity.Ad;
+import com.hoc.motobox.entity.Role;
+import com.hoc.motobox.entity.User;
+import com.hoc.motobox.repository.RoleRepository;
+import com.hoc.motobox.repository.UserRepository;
+import com.hoc.motobox.utils.SuperRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,26 +22,23 @@ import java.util.Set;
 @Service
 public class UserService extends InitialDataLoader implements SuperRestService<User> {
 
-    private static final Logger LOGGER = LogManager.getLogger(User.class);_
-
+    private static final Logger LOGGER = LogManager.getLogger(User.class);
+    @Autowired
+    AdService adService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleReposytory;
 
-    @Autowired
-    AdService adService;
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public JpaRepository<User, Long> getDao() {
         return userRepository;
-    }
-
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
