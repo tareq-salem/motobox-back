@@ -1,19 +1,12 @@
 package com.hoc.motobox.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hoc.motobox.utils.SuperEntity;
+
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User extends SuperEntity {
@@ -44,6 +37,12 @@ public class User extends SuperEntity {
             @JoinColumn(name = "ad_id") })
     @JsonIgnore
     Set<Ad> panier = new HashSet<Ad>();
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendor", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Column(name = "ads", nullable = true)
+    private Collection<Ad> ads;
+
 
     public Set<Ad> getPanier() {
         return panier;

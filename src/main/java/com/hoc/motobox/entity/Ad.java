@@ -158,6 +158,11 @@ public abstract class Ad extends SuperEntity {
 	@ManyToMany(mappedBy = "panier")
 	private Set<User> users = new HashSet<User>();
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "vendor", nullable = true)
+	private User vendor;
+
+
 	public Set<User> getUsers() {
 		return users;
 	}
