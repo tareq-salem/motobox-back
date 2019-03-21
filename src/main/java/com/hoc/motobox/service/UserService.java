@@ -1,20 +1,25 @@
 package com.hoc.motobox.service;
 
+import java.util.Set;
+
+import javax.persistence.EntityExistsException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.hoc.motobox.entity.Ad;
 import com.hoc.motobox.entity.Role;
 import com.hoc.motobox.entity.User;
 import com.hoc.motobox.repository.RoleRepository;
 import com.hoc.motobox.repository.UserRepository;
 import com.hoc.motobox.utils.SuperRestService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityExistsException;
-import java.util.Set;
 
 @Service
 public class UserService extends InitialDataLoader implements SuperRestService<User> {
@@ -44,8 +49,6 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 	public User save(User user) throws EntityExistsException {
 		LOGGER.debug("create user {}", user);
 
-
-		
 		if (emailExists(user.getEmail())) {
 			throw new EntityExistsException("There is an account with that email adress: " + user.getEmail());
 		}
@@ -66,7 +69,6 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 		}
 		createUser.setRole(userRole);
 
-
 		return userRepository.save(createUser);
 
 	}
@@ -75,32 +77,61 @@ public class UserService extends InitialDataLoader implements SuperRestService<U
 		return userRepository.findByEmail(email) != null;
 	}
 
-	public Ad addAdToCart(Long idAd, Long idUser) {
+	public Ad addAdToCart(Long idAd) {
 
-		User user = userRepository.findById(idUser).orElseGet(null);
-		Ad ad = adService.findById(idAd).orElseGet(null);
-		Set<Ad> cart = user.getPanier();
-		cart.add(ad);
-		user.setPanier(cart);
-		userRepository.save(user);
+		Ad ad = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+
+			User currentUser = userRepository.findByEmail(currentUserName);
+			ad = adService.findById(idAd).orElseGet(null);
+
+			Set<Ad> cart = currentUser.getPanier();
+			cart.add(ad);
+			currentUser.setPanier(cart);
+			userRepository.save(currentUser);
+
+		}
 
 		return ad;
+	}
 
+	public User removeAdFromCart(Long idAd) {
+
+		User currentUser = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+
+			currentUser = userRepository.findByEmail(currentUserName);
+			Ad ad = adService.findById(idAd).orElseGet(null);
+
+			Set<Ad> cart = currentUser.getPanier();
+			cart.remove(ad);
+			currentUser.setPanier(cart);
+			userRepository.save(currentUser);
+
+		}
+
+		return currentUser;
 	}
+
+	public Set<Ad> getCart() {
+
+		User currentUser = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+
+			currentUser = userRepository.findByEmail(currentUserName);
+		}
+		return currentUser.getPanier();
+	}
+
 	
-	public User removeAdFromCart(Long idAd, Long idUser) {
-		
-		User user = userRepository.findById(idUser).orElseGet(null);
-		Ad ad = adService.findById(idAd).orElseGet(null);
-		Set<Ad> cart = user.getPanier();
-		cart.remove(ad);
-		userRepository.save(user);
-		return user;
-	}
-	
-	public Set<Ad> getCart(Long id){
-		
-		return userRepository.findById(id).orElse(null).getPanier();
-	}
 
 }

@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"tareq12@jean.fr\",\n\t\"password\": \"1234\",\n\t\"firstName\": \"Jean\",\n\t\"lastName\": \"Marie\",\n\t\"role\":{\n\t\t\"name\":\"JUNKYARD\"\n\t},\n\t\"address\": {\n\t\t\"street\": \"rue test\",\n\t\t\"number\": \"1\",\n\t\t\"city\": \"Lyon\",\n\t\t\"postal_code\": 69000\n\t},\n\t\"phone\": \"0231566699\"\n}"
+							"raw": "{\n\t\"email\": \"tareq111@jean.fr\",\n\t\"password\": \"1234\",\n\t\"firstName\": \"Jean\",\n\t\"lastName\": \"Marie\",\n\t\"role\":{\n\t\t\"name\":\"ROLE_USER\"\n\t},\n\t\"address\": {\n\t\t\"street\": \"rue test\",\n\t\t\"number\": \"1\",\n\t\t\"city\": \"Lyon\",\n\t\t\"postal_code\": 69000\n\t},\n\t\"phone\": \"0231566699\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user",
@@ -47,7 +47,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZWFuQGplYW4uZnIiLCJleHAiOjE1NTM0MTY3MDB9.LFEzvUveJYZ6sMn2_usXO8hNujWtb5R4v_q8xBvJNI3YJLt4wsBEhObxyUqliZXK56SFtlH2lJ6RP83derDM_g",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEyQGplYW4uZnIiLCJleHAiOjE1NTM3NzU3MTV9.el3yrPjKshuyk3q8QdHOHmrCqwIq1uT0TMgzu3K55OFM1sPKoufPr2hV_0ATU6I3iMN6ZXIrIGD0NefG9MXK7g",
 									"type": "string"
 								}
 							]
@@ -63,16 +63,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\":\"1\"\n}"
+							"raw": "{\n\t\"id\":\"3\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/user/1",
+							"raw": "{{url}}/user/17",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"user",
-								"1"
+								"17"
 							]
 						}
 					},
@@ -103,6 +103,16 @@
 				{
 					"name": "delete User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcUBqZWFuLmZyIiwiZXhwIjoxNTUzOTU5ODM0fQ.fyZym4CjYK1dQItC-I-DMM6poa9bNMzQ5HyuJDaUjhZAAEv-bOwjY6w-zA29nyCDwBF8-jTIWB4Z4s8brQKj5g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -110,21 +120,107 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/user/1",
+							"raw": "{{url}}/user/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"user",
-								"1"
+								"9"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getAdsByUser",
+					"name": "add un article to user cart",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTBAamVhbi5mciIsImV4cCI6MTU1NDAyNTc4OH0.S-REDJF5IHcraIzjTLLjAFeVQnqgRVXAC1yxjNu3aNvXPpu-seJHO0nd6oWV4FeoXHF3XaWGMZTh5xghnP0e0g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/addToCart/ads/14",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"addToCart",
+								"ads",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete ad from user cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTBAamVhbi5mciIsImV4cCI6MTU1NDAyNjM5N30.jw_gsH5-eLOkSkrcEF9YHEh7KQD4hhlm3NuSncUqpX7NcC1vvPckXZpz8jcaQdZBNTVDt3vEeEHgBxfBbNlz8w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/remove/ads/14",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"remove",
+								"ads",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTBAamVhbi5mciIsImV4cCI6MTU1NDAyNjY3OX0.pZdrWcvCRTT29zBweldidgzesNoTTLGkTAYdDwsPZUji0Brti_PGbhETRCAhqi1C9Y5qZiK7xPqz1Zs4XyD0Yw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -132,14 +228,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/user/1/ads",
+							"raw": "{{url}}/user/cart",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"user",
-								"1",
-								"ads"
+								"cart"
 							]
 						}
 					},
@@ -158,7 +253,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEyQGplYW4uZnIiLCJleHAiOjE1NTM3NzQ0ODB9.98R5flBkMXUrfUn28yeEHapmKbqwORkvsN-mnJJ43svypBxN3zXeS-HQ5h5w5Ii_Md7UsdeguCS44-ZixeFylA",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEzQGplYW4uZnIiLCJleHAiOjE1NTM3ODg5NDl9.4LxUUDcT7e_Pv3oXnL-TESpmfuCsmdBhbauN3Kb_bjimnyuAHVGajaff5ctybpnYe2OtY1DysWxlmimoRCb0tw",
 									"type": "string"
 								}
 							]
@@ -174,14 +269,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\" : \"titre annonce\",\n\t\"description\" : \"desc annonce\",\n\t\"model\" : \"model de tes morts\",\n\t\"brand\" : \"le brand ouaich\",\n\t\"year\" : \"2019\",\n\t\"price\" : \"50e\",\n\t\"location\" : \"Lyon\",\n\t\"imageUrl\" : \"http://url.fr\",\n\t\"category\" : \"Boucle arrière\",\n\t\"is_active\" : true\n}"
+							"raw": "{\n\t\"title\" : \"ll1\",\n\t\"description\" : \"desc annonce\",\n\t\"model\" : \"model de tes morts\",\n\t\"brand\" : \"le brand ouaich\",\n\t\"year\" : \"2019\",\n\t\"price\" : \"50e\",\n\t\"location\" : \"Lyon\",\n\t\"imageUrl\" : \"http://url.fr\",\n\t\"category\" : \"Cadre\",\n\t\"is_active\" : true\n\n}"
 						},
 						"url": {
-							"raw": "{{url}}/ad",
+							"raw": "{{url}}/user/ad",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"user",
 								"ad"
 							]
 						}
@@ -190,31 +286,41 @@
 				},
 				{
 					"name": "user  get ad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEyQGplYW4uZnIiLCJleHAiOjE1NTM3NzQ0ODB9.98R5flBkMXUrfUn28yeEHapmKbqwORkvsN-mnJJ43svypBxN3zXeS-HQ5h5w5Ii_Md7UsdeguCS44-ZixeFylA",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEzQGplYW4uZnIiLCJleHAiOjE1NTM3ODcyMDV9.anltmHpFf8yZEg64E5PxaiVc0aan67HatatDIEJuG2V1EGIYcruCm6CaU7Bz2LNJ6Ooh_tGPdZRiDr-y3BSUNA",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}user/ad/5",
+							"raw": "{{url}}user/ad/15",
 							"host": [
 								"{{url}}user"
 							],
 							"path": [
 								"ad",
-								"5"
+								"15"
 							]
 						}
 					},
@@ -493,7 +599,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"tareq12@jean.fr\",\n\t\"password\": \"1234\"\n}"
+							"raw": "{\n\t\"email\": \"tareq111@jean.fr\",\n\t\"password\": \"1234\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/login",
@@ -541,7 +647,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZWFuQGplYW4uZnIiLCJleHAiOjE1NTM0MTY3MDB9.LFEzvUveJYZ6sMn2_usXO8hNujWtb5R4v_q8xBvJNI3YJLt4wsBEhObxyUqliZXK56SFtlH2lJ6RP83derDM_g",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YXJlcTEyQGplYW4uZnIiLCJleHAiOjE1NTM3NzQ0ODB9.98R5flBkMXUrfUn28yeEHapmKbqwORkvsN-mnJJ43svypBxN3zXeS-HQ5h5w5Ii_Md7UsdeguCS44-ZixeFylA",
 									"type": "string"
 								}
 							]

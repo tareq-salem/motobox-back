@@ -1,5 +1,6 @@
 package com.hoc.motobox.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hoc.motobox.utils.SuperEntity;
 
 import javax.persistence.*;
@@ -7,10 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@DiscriminatorColumn(
-	    name="Cart",
-	    discriminatorType=DiscriminatorType.STRING
-	    )
 public class User extends SuperEntity {
 
     @Column(nullable = false)
@@ -29,7 +26,8 @@ public class User extends SuperEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-
+    
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role", nullable = true)
     private Role role;
@@ -40,6 +38,7 @@ public class User extends SuperEntity {
         joinColumns = { @JoinColumn(name = "user_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "ad_id") }
     )
+    @JsonIgnore
     Set<Ad> panier = new HashSet<Ad>();
     
     

@@ -6,6 +6,9 @@ import com.hoc.motobox.service.AdService;
 import com.hoc.motobox.service.UserService;
 import com.hoc.motobox.utils.SuperController;
 import com.hoc.motobox.utils.SuperRestService;
+
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,22 +39,26 @@ public class UserController extends SuperController<User> {
 	 * @return L'Ad qui a été ajoutée au panier
 	 */
 	
-	@PostMapping("/{id}/ads/{idAd}")
-	public Ad addAdToCart(@PathVariable Long id, @PathVariable Long idAd) {
+	@PostMapping("/addToCart/ads/{idAd}")
+	public Ad addAdToCart(@PathVariable Long idAd) {
 
 		
-		return this.userService.addAdToCart(idAd, id);
+		return this.userService.addAdToCart(idAd);
 
 	}
 	
-	@DeleteMapping("/{id}/ads/{idAd}")
-	public User removeAdFromCart(@PathVariable Long id, @PathVariable Long idAd) {
+	@DeleteMapping("/remove/ads/{idAd}")
+	public User removeAdFromCart(@PathVariable Long idAd) {
 
 		
-		return this.userService.removeAdFromCart(idAd, id);
+		return this.userService.removeAdFromCart(idAd);
 
 	}
 	
+	@GetMapping("/cart")
+	public Set<Ad> getCart(){
+		return this.userService.getCart();
+	}
 	
 
 }
