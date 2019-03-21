@@ -27,14 +27,18 @@ public class User extends SuperEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-
+    
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role", nullable = true)
     private Role role;
 
     @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "User_Ad", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "ad_id") })
+    @JoinTable(
+        name = "User_Ad", 
+        joinColumns = { @JoinColumn(name = "user_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "ad_id") }
+    )
     @JsonIgnore
     Set<Ad> panier = new HashSet<Ad>();
 
