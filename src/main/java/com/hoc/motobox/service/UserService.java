@@ -16,14 +16,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityExistsException;
-import java.util.Set;
+import com.hoc.motobox.entity.Ad;
+import com.hoc.motobox.entity.Role;
+import com.hoc.motobox.entity.User;
+import com.hoc.motobox.repository.RoleRepository;
+import com.hoc.motobox.repository.UserRepository;
+import com.hoc.motobox.utils.SuperRestService;
 
 @Service
 public class UserService extends InitialDataLoader implements SuperRestService<User> {
 
     private static final Logger LOGGER = LogManager.getLogger(User.class);_
 
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
