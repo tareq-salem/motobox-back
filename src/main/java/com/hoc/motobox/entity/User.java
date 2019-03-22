@@ -1,3 +1,4 @@
+
 package com.hoc.motobox.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -149,3 +150,4 @@ public class User extends SuperEntity {
     }
 
 }
+
